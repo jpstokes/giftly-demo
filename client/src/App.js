@@ -14,6 +14,7 @@ const Container = styled.div`
 
 class App extends Component {
   componentWillMount() {
+    # Hardcoding Yelp's ID for demo purposes.
     BusinessService.getBusiness(1)
       .then(response => {
         this.setState({ business: response.data });
