@@ -55,14 +55,16 @@ class Header extends Component {
     return (
       <Container>
         <Navbar>
-          <NavbarHeader>
-            <Navbar.Brand>
-              <img alt="" src={logo} />
-            </Navbar.Brand>
-            <div className="card-name">
-              {this.props.business.name} Gift Card
-            </div>
-          </NavbarHeader>
+          <div style={{position: 'absolute', left: 20}}>
+            <NavbarHeader>
+              <Navbar.Brand>
+                <img alt="" src={logo} />
+              </Navbar.Brand>
+              <div className="card-name">
+                {this.props.business.name} Gift Card
+              </div>
+            </NavbarHeader>
+          </div>
           <NavbarRight>
             <Nav>
               <NavItem href="#">
