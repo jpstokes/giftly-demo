@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import logo from '../assets/giftly-logo-header.png';
+import Clearfix from 'react-bootstrap/lib/Clearfix';
 
 const Container = styled.div`
   background: #F0EFE7;
@@ -64,16 +65,19 @@ class Header extends Component {
                 {this.props.business.name} Gift Card
               </div>
             </NavbarHeader>
+            <Clearfix />
           </div>
           <NavbarRight>
-            <Nav>
-              <NavItem href="#">
-                Browse
-              </NavItem>
-              <NavItem href="#">
-                Corporate Gifts
-              </NavItem>
-            </Nav>
+            <Navbar.Collapse>
+              <Nav>
+                <NavItem href="#">
+                  Browse
+                </NavItem>
+                <NavItem href="#">
+                  Corporate Gifts
+                </NavItem>
+              </Nav>
+            </Navbar.Collapse>
           </NavbarRight>
         </Navbar>
       </Container>
@@ -87,6 +91,7 @@ class Breadcrumbs extends Component {
     return (
       <BreadcrumbsContainer>
         Gift Cards > {business.location.city} > Restaurants > American > {business.name}
+        <Clearfix />
       </BreadcrumbsContainer>
     );
   }
