@@ -215,7 +215,7 @@ class Main extends Component {
           ? <div>
           <StyledPanelMain>
             <Panel.Heading>
-              Buy a Gift Panel to {business.name}
+              Buy a Gift Card to {business.name}
             </Panel.Heading>
             <Panel.Body>
               <p>
