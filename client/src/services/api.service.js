@@ -5,5 +5,5 @@ const config = {};
 export default function ApiService() {}
 
 ApiService.get = function(url){
-  return axios.get('http://localhost:3001/api' + url, config);
+  return axios.get('/api' + url, config);
 }
