@@ -249,6 +249,7 @@ class Main extends Component {
   render() {
     const business = this.props && this.props.business;
     const reviews = this.props && this.props.reviews;
+    const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API_KEY}&v=3.exp&libraries=geometry,drawing,places`
     return (
       <Container className="Main">
         { business && reviews
@@ -349,7 +350,7 @@ class Main extends Component {
               </Row>
               <Map
                 isMarkerShown
-                googleMapURL="https://maps.googleapis.com/maps/api/js?key=API_KEY&v=3.exp&libraries=geometry,drawing,places"
+                googleMapURL={googleMapURL}
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `150px`, marginBottom: 20 }} />}
                 mapElement={<div style={{ height: `100%` }} />}>
