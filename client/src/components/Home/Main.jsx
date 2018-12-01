@@ -17,8 +17,9 @@ import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import Clearfix from 'react-bootstrap/lib/Clearfix';
 import yelpLogo from '../../assets/yelp_logo.png';
-import Map from './map';
+import Map from './Map';
 import logoSmall from '../../assets/giftly-small-white.png';
+import GlobalStyle from "../../globalStyle.js";
 
 const Container = styled.div`
   .panel {
@@ -29,27 +30,35 @@ const Container = styled.div`
 
   .panel-footer {
     background: transparent;
-    padding: 10px 50px;
-    ul {
-      margin: auto;
-      width: auto;
-      li {
-        float: left;
-        list-style: none;
-        width: 20%;
-      }
-    }
   }
 
   .panel-body {
     padding: 20px 50px;
     text-align: left;
+
+    @media screen and (max-width: 767px) {
+      padding-top: 10px;
+    }
+
   }
 
   .btn {
     background: #1BBFDF;
     border: #1BBFDF;
-    width: 60%;
+    padding: 8px 40px;
+    margin-bottom: 10px;
+  }
+
+  .blue-text {
+    color: #1BBFDF;
+  }
+
+  .green-text {
+    color: #42B770;
+  }
+
+  .headers {
+    font-weight: 500;
   }
 `
 
@@ -60,16 +69,22 @@ const GaranteeContainer = styled.div`
 
 const ButtonContainer = styled.div`
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: auto 10px;
 `
 
 const StyledPanelMain = styled(Panel)`
   .panel-heading {
+    background: transparent;
     border-top: 4px solid #A3BCC1;
     border-bottom: 0;
     color: #A3BCC1;
     font-size: 26px;
     text-align: center;
+
+    @media screen and (max-width: 767px) {
+      padding-bottom: 0;
+    }
+
   }
   .panel-footer {
     color: #1BBFDF;
@@ -81,7 +96,10 @@ const StyledPanelMain = styled(Panel)`
       li {
         float: left;
         list-style: none;
-        width: 20%;
+
+        @media screen and (max-width: 767px) {
+          height: 91px;
+        }
       }
     }
   }
@@ -97,7 +115,15 @@ const StyledPanel = styled(Panel)`
     color: #A3BCC1;
     font-size: 26px;
     text-align: left;
-    padding: 20px 50px;
+    padding: 20px 50px 10px;
+
+    @media screen and (max-width: 767px) {
+      padding-bottom: 0;
+    }
+  }
+  .panel-body {
+    margin-top: 0;
+    padding-top: 0;
   }
   .restaurant-types, .restaurant-city {
     color: #1BBFDF;
@@ -119,8 +145,15 @@ const StyledPanel = styled(Panel)`
         margin-bottom: 15px;
       }
     }
+    @media screen and (max-width: 767px) {
+      text-align: center;
+    }
   }
-
+  .text {
+    @media screen and (max-width: 767px) {
+      text-align: center;
+    }
+  }
 `
 
 const CustomizableCardsPanel = styled(Panel)`
@@ -154,6 +187,9 @@ const AboutUsPanel = styled(StyledPanel)`
     border-radius: 4px;
     clip-path: inset(0px 30px 0px 0px);
   }
+  .panel-heading {
+    padding-bottom: 30px;
+  }
   .business-name {
     font-size: 20px;
     position: relative;
@@ -167,7 +203,6 @@ const AboutUsPanel = styled(StyledPanel)`
     height: 24px;
     background-position: 0 -168px;
     padding-left: 140px;
-    width: 350px;
     img {
       width: 60px;
     }
@@ -182,10 +217,17 @@ const AboutUsPanel = styled(StyledPanel)`
       float: left;
     }
     .text {
-      position: relative;
-      top: 13px;
       float: left;
       font-size: 20px;
+      width: 200px;
+      margin-top: 13px;
+
+      @media screen and (max-width: 767px) {
+        width: 160px;
+        font-size: 16px;
+        position: relative;
+        top: 17px;
+      }
     }
     .review-rating {
       background: url(https://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_design_web/9b34e39ccbeb/assets/img/stars/stars.png) no-repeat;
@@ -195,12 +237,11 @@ const AboutUsPanel = styled(StyledPanel)`
       height: 18px;
       background-position: 16px -366px;
       padding: 0;
+      margin-bottom: 4px;
     }
     .review {
       position: initial;
-      margin-top: -6px;
       font-size: 14px;
-      margin-left: -16px;
     }
   }
 `
@@ -213,6 +254,8 @@ class Main extends Component {
       <Container className="Main">
         { business && reviews
           ? <div>
+
+          <GlobalStyle />
           <StyledPanelMain>
             <Panel.Heading>
               Buy a Gift Card to {business.name}
@@ -252,6 +295,7 @@ class Main extends Component {
                 <li><img alt="" src={birthdayCard}/></li>
                 <li><img alt="" src={enjoy}/></li>
                 <li><img alt="" src={congrats}/></li>
+                <Clearfix visibleXsBlock/>
                 <li><img alt="" src={photo}/></li>
                 <li><img alt="" src={loveCard}/></li>
                 <li><img alt="" src={birthdayCandles}/></li>
@@ -264,12 +308,12 @@ class Main extends Component {
             </Panel.Heading>
             <Panel.Body>
               <div style={{marginBottom: 20, clear: 'both'}}>
-                <img className="photo" alt="" src={business.image_url} style={{float: 'left'}}/>
+                <img className="photo" alt="" src={business.image_url} style={{float: 'left', marginBottom: 20}}/>
                 <div style={{float: 'left'}}>
                   <div className="business-name">{business.name}</div>
                   <div className="rating">
-                    <div className="review-count">
-                      based on {business.review_count} on <img alt="yelp logo" src={yelpLogo}/>
+                    <div className="review-count hidden-xs">
+                      based on {business.review_count} on <img className="review-logo" alt="yelp logo" src={yelpLogo}/>
                     </div>
                   </div>
                   <div>{business.location.address1}, {business.location.city}, {business.location.state}</div>
@@ -278,52 +322,55 @@ class Main extends Component {
                 <Clearfix />
               </div>
               <Clearfix />
-              <Row>
-                <Col xs={3}>
+              <Row style={{marginBottom: 20}}>
+                <Col xs={6} sm={3} style={{marginBottom: 10}}>
                   <div>
-                    <div>Categories</div>
-                    <div>{business.categories.join(', ')}</div>
+                    <div className="headers">Categories</div>
+                    <div><span className="blue-text">{['Italian', 'French'].join(', ')}</span></div>
                   </div>
                 </Col>
-                <Col xs={3}>
+                <Col xs={6} sm={3} style={{marginBottom: 10}}>
                   <div>
-                    <div>Price Range</div>
-                    <div>{business.price}</div>
+                    <div className="headers">Price Range</div>
+                    <div><span className="green-text">{business.price}</span></div>
                   </div>
                 </Col>
-                <Col xs={3}>
+                <Col xs={6} sm={3}>
                   <div>
-                    <div>Neighborhood</div>
-                    <div>Hayes Valley</div>
+                    <div className="headers">Neighborhood</div>
+                    <div><span className="blue-text">Hayes Valley</span></div>
                   </div>
                 </Col>
-                <Col xs={3}>
+                <Col xs={6} sm={3}>
                   <div>
-                    <div>Cross Streets</div>
+                    <div className="headers">Cross Streets</div>
                     <div>{business.location.cross_streets}</div>
                   </div>
                 </Col>
               </Row>
               <Map
                 isMarkerShown
-                googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                googleMapURL="https://maps.googleapis.com/maps/api/js?key=API_KEY&v=3.exp&libraries=geometry,drawing,places"
                 loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `150px` }} />}
+                containerElement={<div style={{ height: `150px`, marginBottom: 20 }} />}
                 mapElement={<div style={{ height: `100%` }} />}>
               </Map>
-              <div className="reviews">
-                <div>
-                  <img alt="yelp logo" src={yelpLogo} style={{width: 80}}/>
-                  <div className="text">reviews for {business.name}</div>
+              <Row className="reviews">
+                <Col>
+                  <img alt="yelp logo" src={yelpLogo} style={{width: 80, float: 'left'}}/>
+                  <div className="text" style={{float: 'left'}}>reviews for {business.name}</div>
                   <Clearfix />
-                </div>
-                { reviews && reviews.map((review, index) =>
-                  <Row key={index} style={{marginBottom: 20}}>
-                    <Col xs={3} className="review-rating"></Col>
-                    <Col xs={9} className="review">"{review.text}" <span style={{color: '#1BBFDF'}}>read more</span></Col>
-                  </Row>
-                )}
-              </div>
+                </Col>
+                <Col>
+                    { reviews && reviews.map((review, index) =>
+                      <Row key={index} style={{marginBottom: 20, listStyle: 'none', margin: '0 0 20px'}}>
+                        <Col xs={12} sm={3} className="review-rating"></Col>
+                        <Col xs={12} sm={9} className="review">"{review.text}" <span style={{color: '#1BBFDF'}}>read more</span></Col>
+                      </Row>
+                    )}
+                </Col>
+                <Clearfix />
+              </Row>
             </Panel.Body>
             <Panel.Footer>
               Is this your business? Take a moment to <span style={{color: '#1BBFDF'}}>claim the page</span> and customize for free.
@@ -349,32 +396,32 @@ class Main extends Component {
                   </ul>
                 </Col>
               </Row>
-              <p>Or perhaps,</p>
+              <p className="text">Or perhaps,</p>
               <Row>
-                <Col xs={4} className="gift-card-types">
+                <Col xs={12} sm={4} className="gift-card-types">
                   <ul>
                     <li><img alt="" src={dinner}/></li>
                     <li>Dinner at Any restaurant</li>
                   </ul>
                 </Col>
-                <Col xs={4} className="gift-card-types">
+                <Col xs={12} sm={4} className="gift-card-types">
                   <ul>
                     <li><img alt="" src={anything}/></li>
                     <li>Anything at Any place</li>
                   </ul>
                 </Col>
-                <Col xs={4} className="gift-card-types">
+                <Col xs={12} sm={4} className="gift-card-types">
                   <ul>
                     <li><img alt="" src={movies}/></li>
                     <li>Movies at Any theater</li>
                   </ul>
                 </Col>
               </Row>
-              <p style={{color: '#1BBFDF', textDecorationLine: 'underline'}}>Browse more gift ideas</p>
+              <p className="text" style={{color: '#1BBFDF', textDecorationLine: 'underline'}}>Browse more gift ideas</p>
             </Panel.Body>
           </StyledPanel>
           <StyledPanel>
-            <Panel.Heading>
+            <Panel.Heading style={{paddingBottom: 30}}>
               Why buy a gift card using <img alt="" src={logoSmall}/>?
             </Panel.Heading>
             <Panel.Body>
@@ -417,7 +464,7 @@ class Main extends Component {
               </GaranteeContainer>
             </Panel.Body>
           </StyledPanel>
-          <StyledPanel>
+          <StyledPanel style={{marginBottom: 200}}>
             <Panel.Heading>
               Gift Card Disclosure
             </Panel.Heading>

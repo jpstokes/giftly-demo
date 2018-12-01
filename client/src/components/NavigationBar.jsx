@@ -28,6 +28,17 @@ const Container = styled.div`
     background-color: #F0EFE7;
     border-color: #F0EFE7;
   }
+
+  .hang-left {
+    position: absolute;
+    left: 20px;
+
+    @media screen and (max-width: 767px) {
+      text-align: center;
+      left: 0px;
+    }
+
+  }
 `
 
 const BreadcrumbsContainer = styled.div`
@@ -38,7 +49,7 @@ const BreadcrumbsContainer = styled.div`
 `
 
 const NavbarHeader = styled.div`
-  width: 400px;
+  width: 240px;
   float: left;
 `
 
@@ -56,7 +67,7 @@ class Header extends Component {
     return (
       <Container>
         <Navbar>
-          <div style={{position: 'absolute', left: 20}}>
+          <div className="hang-left">
             <NavbarHeader>
               <Navbar.Brand>
                 <img alt="" src={logo} />

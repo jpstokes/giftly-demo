@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import Home from './components/Home';
-import { Header, Breadcrumbs } from './components/NavigationBar';
-import Grid from 'react-bootstrap/lib/Grid';
-import Row from 'react-bootstrap/lib/Row';
-import Clearfix from 'react-bootstrap/lib/Clearfix';
-import Col from 'react-bootstrap/lib/Col';
-import BusinessService from './services/business.service';
+import React, { Component } from "react";
+import styled from "styled-components";
+import Home from "./components/Home";
+import { Header, Breadcrumbs } from "./components/NavigationBar";
+import Grid from "react-bootstrap/lib/Grid";
+import Row from "react-bootstrap/lib/Row";
+import Clearfix from "react-bootstrap/lib/Clearfix";
+import Col from "react-bootstrap/lib/Col";
+import BusinessService from "./services/businessService";
 
 const Container = styled.div`
-
+  margin: 0;
+  padding: 0;
 `
 
 class App extends Component {
@@ -45,7 +46,7 @@ class App extends Component {
             <Clearfix />
             <Grid>
               <Row>
-                <Col xs={10} xsOffset={1} sm={8} smOffset={2}>
+                <Col sm={8} smOffset={2}>
                   <Home {...this.state}/>
                 </Col>
               </Row>
