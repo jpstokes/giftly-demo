@@ -225,7 +225,7 @@ const AboutUsPanel = styled(StyledPanel)`
         width: 160px;
         font-size: 16px;
         position: relative;
-        top: 17px;
+        top: 3px;
       }
     }
     .review-rating {
