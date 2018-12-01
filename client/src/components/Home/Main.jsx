@@ -12,7 +12,6 @@ import congrats from '../../assets/congrats-greeting-card.png';
 import loveCard from '../../assets/love-greeting-card.png';
 import movies from '../../assets/movies-at-any-theater.png';
 import photo from '../../assets/photo-greeting-card.png';
-import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import Clearfix from 'react-bootstrap/lib/Clearfix';
