@@ -19,9 +19,7 @@ class BusinessesController < ApplicationController
   end
 
   def search
-    @businesses = YelpServices.new.search(params[:term], params[:location])
-
-    render json: @businesses
+    render json: YelpServices.new.search(params[:term], params[:location])
   end
 
   def business_params
